@@ -1,4 +1,13 @@
+from Tkinter import *
+root = Tk()
+f1 = Frame(root, bd=1, relief='solid')
+Label(f1, text='je suis dans F1').grid(row=0, column=0)
+Label(f1, text='moi aussi dans F1').grid(row=0, column=1)
 
+f1.grid(row=0, column=0)
+Label(root, text='je suis dans root').grid(row=1, column=0)
+Label(root, text='moi aussi dans root').grid(row=2, column=0)
+root.mainloop()
 print "bienvenue dans la super mega calculette en python";
 print "pour une addition tapper : 1";
 print "pour une soustraction tapper : 2";
@@ -19,15 +28,3 @@ n1 = input()
 print "second nombre ?";
 n2 = input()
 print "Le resultat est :"
-print calcule(n1, typecalcule, n2)
-# .-------------------.
-# |                   |
-# |                   |
-# |  P A R E N T A L  |
-# |                   |
-# |  A D V I S O R Y  |
-# |                   |
-# |                   |
-# | explicit  content |
-# |                   |
-# `-------------------'
