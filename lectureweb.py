@@ -2,7 +2,7 @@ import bs4, urllib, base64
 
 URL="https://twitter.com/morpheeDgami"
 
-page = urllib.urlopen(URL)
+page=urllib.urlopen(URL)
 data=page.read().decode('UTF-8')
 soup=bs4.BeautifulSoup(data, 'html.parser')
 
