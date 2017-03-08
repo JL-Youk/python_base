@@ -1,4 +1,4 @@
-import bs4, urllib
+import bs4, urllib, base64
 
 URL="https://twitter.com/morpheeDgami"
 
@@ -10,5 +10,10 @@ recup=soup.findAll(attrs={"class":"js-tweet-text-container"})
 
 tweet=[]
 for i in recup:
+    tweet.append(i.getText())
 
-print (base64.b64decode(tweet[0]))
+# Affichage classique
+# print tweet[0]
+
+# Affichage avec une converssion du base64
+print base64.b64decode(tweet[0])
