@@ -30,7 +30,7 @@ def percistance (tempdir, fileName, run):
         pass
 
 def Connect():
-    
+
     host = "localhost"
     port = 1234
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
