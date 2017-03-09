@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup as soupy
 import urllib, re
 
-html = urllib.urlopen('https://twitter.com/_n0cturne_').read()
+html = urllib.urlopen('https://twitter.com/hugo_liiine').read()
 soup = soupy(html, "html.parser")
 
 x = soup.find("meta", {"name":"description"})['content']
