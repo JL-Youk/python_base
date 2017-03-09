@@ -31,21 +31,14 @@ class AESCipher(object):
         raw = self._pad(AESCipher.str_to_bytes(raw))
         iv = Random.new().read(AES.block_size)
         cipher = AES.new(self.key, AES.MODE_CBC, iv)
-        return base64.b64encode(iv + cipher.encrypt(raw)).decode('utf-8')
+        return iv + cipher.encrypt(raw)
 
     def decrypt(self, enc):
-        enc = base64.b64decode(enc)
+        enc = enc
         iv = enc[:AES.block_size]
         cipher = AES.new(self.key, AES.MODE_CBC, iv)
-        return self._unpad(cipher.decrypt(enc[AES.block_size:])).decode('utf-8')
+        return self._unpad(cipher.decrypt(enc[AES.block_size:]))
 
-def basique():
-    cipher = AESCipher(key='mykey')
-    encrypted = cipher.encrypt("Hello World")
-    print(encrypted)
-    new_cipher = AESCipher(key='mykey')
-    decrypted = new_cipher.decrypt(encrypted)
-    print(decrypted)
 
 cipher = AESCipher(key='mykey')
 def gocrypt():
