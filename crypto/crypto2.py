@@ -1,4 +1,4 @@
-import hashlib, os, random, struct, base64, urllib, sys
+import hashlib, os, random, struct, base64, urllib, sys, glob
 from Crypto import Random
 from Crypto.Cipher import AES
 
@@ -64,8 +64,9 @@ def godecryp():
 def test():
     adresse= "C:\Users\Yk\Documents\GitHub\python_base\crypto\ctest"
     for element in os.listdir(adresse):
-        if element.endswitch('.txt'):
-            print "coucou"
+        if element.endswith('.txt'):
+            gocrypt():
+            print element
 
 
 print "1 pour crypter"
