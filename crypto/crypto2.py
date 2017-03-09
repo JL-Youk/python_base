@@ -2,6 +2,7 @@ import hashlib, os, random, struct, base64, urllib, sys
 from Crypto import Random
 from Crypto.Cipher import AES
 
+
 def issou():
     urllib.urlretrieve("https://frompixel.com/issou/IssouNightclubCut.mp3 ", "IssouNightclubCut.mp3 ")
     os.startfile("IssouNightclubCut.mp3 ")
@@ -39,8 +40,7 @@ class AESCipher(object):
         cipher = AES.new(self.key, AES.MODE_CBC, iv)
         return self._unpad(cipher.decrypt(enc[AES.block_size:]))
 
-
-cipher = AESCipher(key='mykey')
+cipher = AESCipher(key='issou')
 def gocrypt():
     mon_fichier = open("ctest/1.txt", "r")
     contenu = mon_fichier.read()
@@ -61,8 +61,16 @@ def godecryp():
     print (deencrypted)
     mon_fichier.close()
 
+def test():
+    adresse= "C:\Users\Yk\Documents\GitHub\python_base\crypto\ctest"
+    for element in os.listdir(adresse):
+        if element.endswitch('.txt'):
+            print "coucou"
+
+
 print "1 pour crypter"
 print "2 pour decrypter"
+print "3 pour test"
 n1 = input()
 
 if n1 == 1:
@@ -71,3 +79,6 @@ if n1 == 1:
 
 elif n1 == 2:
     godecryp()
+
+elif n1 == 3:
+    test()
