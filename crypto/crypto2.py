@@ -51,7 +51,8 @@ def gocrypt():
     print (encrypted)
     mon_fichier.close()
 
-def godecryp():
+def godecryp(fichier):
+    print fichier
     mon_fichier = open("ctest/1.txt", "r")
     contenu = mon_fichier.read()
     deencrypted = cipher.decrypt(contenu)
@@ -65,8 +66,8 @@ def test():
     adresse= "C:\Users\Yk\Documents\GitHub\python_base\crypto\ctest"
     for element in os.listdir(adresse):
         if element.endswith('.txt'):
-            # gocrypt()
-            print element
+            fichier = os.path.abspath(element)
+            gocrypt(fichier)
 
 
 print "1 pour crypter"
