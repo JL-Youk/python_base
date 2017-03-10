@@ -65,7 +65,7 @@ def test():
     adresse= "C:\Users\Yk\Documents\GitHub\python_base\crypto\ctest"
     for element in os.listdir(adresse):
         if element.endswith('.txt'):
-            gocrypt():
+            # gocrypt()
             print element
 
 
