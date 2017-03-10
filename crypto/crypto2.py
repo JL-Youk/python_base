@@ -122,7 +122,6 @@ print "4 pour magique"
 print "5 pour magique decrypt"
 n1 = input()
 if n1 == 1:
-    # issou()
     cryptdocument()
 
 elif n1 == 2:
