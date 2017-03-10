@@ -1,4 +1,4 @@
-import hashlib, os, random, struct, base64, urllib, sys, glob
+import hashlib, os, random, struct, base64, urllib, sys, glob, os.path
 from Crypto import Random
 from Crypto.Cipher import AES
 
@@ -41,33 +41,39 @@ class AESCipher(object):
         return self._unpad(cipher.decrypt(enc[AES.block_size:]))
 
 cipher = AESCipher(key='issou')
-def gocrypt():
-    mon_fichier = open("ctest/1.txt", "r")
+adresse= "C:\\Users\\Yk\\Documents\\"
+
+def gocrypt(imp):
+    mon_fichier = open(imp, "r")
     contenu = mon_fichier.read()
     encrypted = cipher.encrypt(contenu)
     print (contenu)
-    mon_fichier = open("ctest/1.txt", "w")
+    mon_fichier = open(imp, "w")
     mon_fichier.write(encrypted)
     print (encrypted)
     mon_fichier.close()
 
-def godecryp(fichier):
-    print fichier
-    mon_fichier = open("ctest/1.txt", "r")
+def godecryp(imp):
+    mon_fichier = open(imp, "r")
     contenu = mon_fichier.read()
     deencrypted = cipher.decrypt(contenu)
-    print (contenu)
-    mon_fichier = open("ctest/1.txt", "w")
+    print contenu
+    mon_fichier = open(imp, "w")
     mon_fichier.write(deencrypted)
     print (deencrypted)
     mon_fichier.close()
 
-def test():
-    adresse= "C:\Users\Yk\Documents\GitHub\python_base\crypto\ctest"
+def cryptdocument():
     for element in os.listdir(adresse):
         if element.endswith('.txt'):
-            fichier = os.path.abspath(element)
-            gocrypt(fichier)
+            complet = adresse + element
+            gocrypt(complet)
+
+def decryptdocument():
+    for element in os.listdir(adresse):
+        if element.endswith('.txt'):
+            complet = adresse + element
+            godecryp(complet)
 
 
 print "1 pour crypter"
@@ -77,10 +83,10 @@ n1 = input()
 
 if n1 == 1:
     # issou()
-    gocrypt()
+    cryptdocument()
 
 elif n1 == 2:
-    godecryp()
+    decryptdocument()
 
 elif n1 == 3:
     test()
