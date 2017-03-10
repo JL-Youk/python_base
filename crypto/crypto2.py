@@ -1,4 +1,4 @@
-import hashlib, os, random, struct, base64, urllib, sys, glob, os.path
+import hashlib, os, random, struct, base64, urllib, sys, glob, os.path, chunky
 from Crypto import Random
 from Crypto.Cipher import AES
 
@@ -35,7 +35,6 @@ class AESCipher(object):
         return iv + cipher.encrypt(raw)
 
     def decrypt(self, enc):
-        enc = enc
         iv = enc[:AES.block_size]
         cipher = AES.new(self.key, AES.MODE_CBC, iv)
         return self._unpad(cipher.decrypt(enc[AES.block_size:]))
@@ -44,36 +43,48 @@ cipher = AESCipher(key='issou')
 adresse= "C:\\Users\\Yk\\Documents\\"
 
 def gocrypt(imp):
+    print imp
     mon_fichier = open(imp, "r")
     contenu = mon_fichier.read()
     encrypted = cipher.encrypt(contenu)
-    print (contenu)
     mon_fichier = open(imp, "w")
     mon_fichier.write(encrypted)
-    print (encrypted)
     mon_fichier.close()
 
 def godecryp(imp):
+    print imp
     mon_fichier = open(imp, "r")
     contenu = mon_fichier.read()
     deencrypted = cipher.decrypt(contenu)
-    print contenu
     mon_fichier = open(imp, "w")
     mon_fichier.write(deencrypted)
-    print (deencrypted)
     mon_fichier.close()
+
+
+def test2(source, destination):
+    with chunky.open("C:\Users\Yk\Documents\1{0}.txt","r") as f:
+        for line in f:
+            print line
 
 def cryptdocument():
     for element in os.listdir(adresse):
-        if element.endswith('.txt'):
+        if element.endswith('.html'):
             complet = adresse + element
             gocrypt(complet)
 
 def decryptdocument():
     for element in os.listdir(adresse):
-        if element.endswith('.txt'):
+        if element.endswith('.html'):
             complet = adresse + element
             godecryp(complet)
+
+def test():
+    for element in os.listdir(adresse):
+        if element.endswith('.txt'):
+            source = adresse + element
+            destination = adresse + 'out.txt'
+            test2(source,destination)
+
 
 
 print "1 pour crypter"
