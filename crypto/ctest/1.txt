@@ -1,4 +1,258 @@
-une premiere ligne
-une seconde
-la troisieme
-blablabla
+Stack Overflow
+Questions
+Jobs
+Documentation BETA
+Tags
+Users
+
+Search...
+ 
+Log In Sign Up
+x Dismiss
+Join the Stack Overflow Community
+Stack Overflow is a community of 6.8 million programmers, just like you, helping each other. 
+Join them; it only takes a minute: 
+Sign up
+writing string to a file on a new line everytime?
+
+Ask Question
+up vote
+74
+down vote
+favorite
+6
+I want to append a newline to my string every time I call file.write(). What's the easiest way to do this in Python?
+
+python
+shareimprove this question
+edited Dec 6 '13 at 2:26
+
+Seanny123
+1,16921642
+asked May 27 '10 at 3:56
+
+kaushik
+6992914
+add a comment
+4 Answers
+active oldest votes
+up vote
+84
+down vote
+accepted
+Use "\n":
+
+file.write("My String\n");
+See the Python manual for reference.
+
+shareimprove this answer
+answered May 27 '10 at 3:59
+
+halfdan
+22.5k35778
+  	 	
+why the semi colon? – Isopycnal Oscillation Jun 18 '16 at 9:48
+  	 	
+@IsopycnalOscillation: it's not required. using it is a matter of preference, and most people choose not to use it. see here for more information: stackoverflow.com/questions/8236380/… – abw333 Aug 21 '16 at 20:04
+add a comment
+up vote
+45
+down vote
+You can do this in two ways:
+
+f.write("text to write\n")
+or, depending on your Python version (2 or 3):
+
+print >>f, "text to write"         # Python 2.x
+print("text to write", file=f)     # Python 3.x
+shareimprove this answer
+answered May 27 '10 at 3:58
+
+Greg Hewgill
+539k1119081066
+  	 	
+i am using f.writelines(str(x)) to write into a file where x is list to now tell how to write a list x into a file coping each list starting at new line – kaushik May 27 '10 at 4:47
+1	 	
+@kaushik: f.write('\n'.join(x)) or f.writelines(i + '\n' for i in x) – Steven May 27 '10 at 11:25
+add a comment
+up vote
+30
+down vote
+Maybe can you use
+
+file.write(your_string + '\n')
+shareimprove this answer
+answered May 27 '10 at 4:00
+
+Krishna K
+84278
+add a comment
+up vote
+12
+down vote
+If you use it extensively (a lot of written lines), you can subclass 'file':
+
+class cfile(file):
+    #subclass file to have a more convienient use of writeline
+    def __init__(self, name, mode = 'r'):
+        self = file.__init__(self, name, mode)
+
+    def wl(self, string):
+        self.writelines(string + '\n')
+        return None
+Now it offers an additional function wl that does what you want:
+
+fid = cfile('filename.txt', 'w')
+fid.wl('appends newline charachter')
+fid.wl('is written on a new line')
+fid.close()
+Maybe I am missing something like different newline characters (\n, \r, ...) or that the last line is also terminated with a newline, but it works for me.
+
+shareimprove this answer
+answered Jun 12 '14 at 12:02
+
+Thethos
+339313
+add a comment
+protected by Community? Nov 27 '16 at 20:34
+
+Thank you for your interest in this question. Because it has attracted low-quality or spam answers that had to be removed, posting an answer now requires 10 reputation on this site (the association bonus does not count). 
+
+Would you like to answer one of these unanswered questions instead?
+
+Not the answer you're looking for?	Browse other questions tagged python or ask your own question.
+
+asked
+
+6 years ago
+
+viewed
+
+168555 times
+
+active
+
+3 months ago
+
+BLOG
+Developer Hiring Trends in 2017
+Does Anyone Actually Visit Stack Overflow’s Home Page?
+Linked
+
+70
+Why is semicolon allowed in this python snippet?
+0
+Python 2.7 - writing string on a new line
+1
+How do i write a new line or \n into a file
+0
+New line python3
+0
+How to format the file output Python 3
+0
+How to write a list of path names on separate rows in csv file?
+0
+Python: how to write a list of lists to a text file so sub items appear in new lines?
+Related
+
+835
+Calling a function of a module from a string with the function's name in Python
+3055
+How do I check whether a file exists using Python?
+1272
+Parse String to Float or Int
+2088
+Sort a Python dictionary by value
+726
+Converting integer to string in Python?
+1083
+How do I read a file line-by-line into a list?
+1749
+Does Python have a string contains substring method?
+1372
+Catch multiple exceptions in one line (except block)
+970
+Why is reading lines from stdin much slower in C++ than Python?
+613
+Most elegant way to check if the string is empty in Python?
+Hot Network Questions
+
+Why do people with perfect pitch perceive tunes not in 440 Hz out of tune?
+Illustrator: how to modify path without distorting text
+How can increase the shelf life of cut onion?
+What to do about students who miss my lectures and then want me to repeat entire material?
+How much do I have to write?
+Project Euler problem 14 (longest Collatz sequence) in Swift 3
+more hot questions
+question feed
+about us tour help blog chat data legal privacy policy work here advertising info developer jobs directory mobile contact us feedback
+TECHNOLOGY	LIFE / ARTS	CULTURE / RECREATION	SCIENCE	OTHER
+Stack Overflow
+Server Fault
+Super User
+Web Applications
+Ask Ubuntu
+Webmasters
+Game Development
+TeX - LaTeX
+Software Engineering
+Unix & Linux
+Ask Different (Apple)
+WordPress Development
+Geographic Information Systems
+Electrical Engineering
+Android Enthusiasts
+Information Security
+Database Administrators
+Drupal Answers
+SharePoint
+User Experience
+Mathematica
+Salesforce
+ExpressionEngine® Answers
+Cryptography
+Code Review
+Magento
+Signal Processing
+Raspberry Pi
+Programming Puzzles & Code Golf
+more (7)
+Photography
+Science Fiction & Fantasy
+Graphic Design
+Movies & TV
+Music: Practice & Theory
+Seasoned Advice (cooking)
+Home Improvement
+Personal Finance & Money
+Academia
+more (8)
+English Language & Usage
+Skeptics
+Mi Yodeya (Judaism)
+Travel
+Christianity
+English Language Learners
+Japanese Language
+Arqade (gaming)
+Bicycles
+Role-playing Games
+Anime & Manga
+Motor Vehicle Maintenance & Repair
+more (17)
+MathOverflow
+Mathematics
+Cross Validated (stats)
+Theoretical Computer Science
+Physics
+Chemistry
+Biology
+Computer Science
+Philosophy
+more (3)
+Meta Stack Exchange
+Stack Apps
+Area 51
+Stack Overflow Talent
+site design / logo © 2017 Stack Exchange Inc; user contributions licensed under cc by-sa 3.0 with attribution required
+rev 2017.3.10.25377

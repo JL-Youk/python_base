@@ -82,25 +82,44 @@ def test():
             destination = adresse + 'out.txt'
             test2(source,destination)
 
+def magique():
+    NUM_OF_LINES=9999999
+    filename = 'C:\\Users\\Yk\\Documents\\GitHub\\python_base\\crypto\\ctest\\1.txt'
+    with open(filename) as fin:
+        fout = open("C:\\Users\\Yk\\Documents\\GitHub\\python_base\\crypto\\ctest\\output0.txt","wb")
+        for i,line in enumerate(fin):
+            print "original" + line
+            line = cipher.encrypt(line)
+            print "crypte" + line
+            print ""
+            print ""
+            fout.write(line+ "\r\n")
+            if (i+1)%NUM_OF_LINES == 0:
+                fout.close()
+                fout = open("C:\\Users\\Yk\\Documents\\GitHub\\python_base\\crypto\\ctest\\output%d.txt"%(i/NUM_OF_LINES+1),"wb")
+        fout.close()
 
-NUM_OF_LINES=1000
-filename = 'C:\Users\Yk\Documents\GitHub\python_base\crypto\ctest/1.txt'
-with open(filename) as fin:
-    fout = open("C:\Users\Yk\Documents\GitHub\python_base\crypto\ctest/output0.txt","wb")
-    for i,line in enumerate(fin):
-        print line
-        line.replace('\n', '')
-        fout.write(line)
-        if (i+1)%NUM_OF_LINES == 0:
-            fout.close()
-            fout = open("C:\Users\Yk\Documents\GitHub\python_base\crypto\ctest/output%d.txt"%(i/NUM_OF_LINES+1),"wb")
-    fout.close()
+def magiquedecrypte():
+    NUM_OF_LINES=9999999
+    filename = 'C:\\Users\\Yk\\Documents\\GitHub\\python_base\\crypto\\ctest\\output0.txt'
+    with open(filename) as fin:
+        fout = open("C:\\Users\\Yk\\Documents\\GitHub\\python_base\\crypto\\ctest\\outputNEW0.txt","wb")
+        for i,line in enumerate(fin):
+            print line
+            line = cipher.decrypt(line)
+            print line
+            fout.write(line+ "\r\n")
+            if (i+1)%NUM_OF_LINES == 0:
+                fout.close()
+                fout = open("C:\\Users\\Yk\\Documents\\GitHub\\python_base\\crypto\\ctest\\outputNEW%d.txt"%(i/NUM_OF_LINES+1),"wb")
+        fout.close()
 
 
 print "1 pour crypter"
 print "2 pour decrypter"
 print "3 pour test"
 print "4 pour magique"
+print "5 pour magique decrypt"
 n1 = input()
 if n1 == 1:
     # issou()
@@ -111,3 +130,9 @@ elif n1 == 2:
 
 elif n1 == 3:
     test()
+
+elif n1 == 4:
+    magique()
+
+elif n1 == 5:
+    magiquedecrypte()
