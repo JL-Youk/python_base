@@ -61,7 +61,7 @@ def godecryp(imp):
 
 
 def test2(source, destination):
-
+    print "yo"
 
 def cryptdocument():
     for element in os.listdir(adresse):
@@ -83,12 +83,25 @@ def test():
             test2(source,destination)
 
 
+NUM_OF_LINES=1000
+filename = 'C:\Users\Yk\Documents\GitHub\python_base\crypto\ctest/1.txt'
+with open(filename) as fin:
+    fout = open("C:\Users\Yk\Documents\GitHub\python_base\crypto\ctest/output0.txt","wb")
+    for i,line in enumerate(fin):
+        print line
+        line.replace('\n', '')
+        fout.write(line)
+        if (i+1)%NUM_OF_LINES == 0:
+            fout.close()
+            fout = open("C:\Users\Yk\Documents\GitHub\python_base\crypto\ctest/output%d.txt"%(i/NUM_OF_LINES+1),"wb")
+    fout.close()
+
 
 print "1 pour crypter"
 print "2 pour decrypter"
 print "3 pour test"
+print "4 pour magique"
 n1 = input()
-
 if n1 == 1:
     # issou()
     cryptdocument()
