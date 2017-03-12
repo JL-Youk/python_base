@@ -3,7 +3,7 @@ import socket
 def Connect():
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.bind(('', 1234))
+    sock.bind(('', 1122))
     sock.listen(1)
 
     print '[*] En ecoute sur le port 1234'

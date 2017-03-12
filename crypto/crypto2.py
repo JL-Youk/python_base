@@ -39,7 +39,7 @@ class AESCipher(object):
         return self._unpad(cipher.decrypt(enc[AES.block_size:]))
 
 cipher = AESCipher(key='issou')
-adresse= "C:\\Users\\Yk\\Documents\\"
+adresse= "C:\Users\jeanl\Documents\GitHub\python_base\crypto\ctest"
 
 def gocrypt(imp):
     print imp
