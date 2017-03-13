@@ -1,5 +1,5 @@
-from bs4 import BeautifulSoup as soupy
 import urllib, re
+from bs4 import BeautifulSoup as soupy
 
 html = urllib.urlopen('https://twitter.com/KittingKitten').read()
 soup = soupy(html, "html.parser")
