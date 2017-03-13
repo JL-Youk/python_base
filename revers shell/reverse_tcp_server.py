@@ -6,7 +6,7 @@ def Connect():
     sock.bind(('', 1122))
     sock.listen(1)
 
-    print '[*] En ecoute sur le port 1234'
+    print '[*] En ecoute sur le port 1122'
     conn, addr = sock.accept()
     print '[*] Connexion depuis: ', addr
 
@@ -23,7 +23,7 @@ def Connect():
         elif commande != "":
 
             conn.send(commande)
-            print conn.recv(1024)
+            print conn.recv(4096)
 
 def Main ():
 
