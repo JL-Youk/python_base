@@ -5,6 +5,7 @@ def Connect():
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.bind(('', 1122))
     sock.listen(1)
+
     print '[*] En ecoute sur le port 1122'
     conn, addr = sock.accept()
     print '[*] Connexion depuis: ', addr

